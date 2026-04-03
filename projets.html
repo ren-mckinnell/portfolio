@@ -31,7 +31,7 @@
 <section id="project-slideshow">
     <div class="slideshow-panel">
         
-        <div class="slide active-slide">
+        <div class="slide active-slide" id="i18n">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>Jeu Vidéo JavaScript <i>The Price is Precise!</i> (L'ingénierie de la Localisation)</h2>
@@ -39,7 +39,7 @@
             </div>
             
             <video class="slide-video" autoplay loop muted playsinline>
-                <source src="JavaScript Price is Precise - Winner.mp4" type="video/mp4">
+                <source src="JavaScript PriceisPrecise.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="slide">
+        <div class="slide" id="marketing-kit">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>Kits de Marketing Numérique (Conception-Rédaction & Création de Contenu)</h2>
@@ -64,7 +64,9 @@
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
                 <p>En tant que superviseuse chez Runway Games, je dirige la conception-rédaction et la création de contenu pour nos campagnes numériques. Mon rôle consiste à réviser, affiner et optimiser les supports marketing pour les lancements de nos nouveaux jeux avant leur publication sur notre plateforme, <a href="https://runaway.games" target="_blank" style="color: var(--accent-cyan); text-decoration: underline; font-weight: bold;">runaway.games</a>, où les entreprises réservent directement nos expériences de team-building. L'impact de cette stratégie est immédiat : à titre d'exemple, moins de 24 heures après le lancement du kit marketing pour notre édition "Journée Internationale des Droits des Femmes" du jeu <em>Jeoparty</em> (illustrée ci-dessus), nous enregistrions déjà de nouvelles réservations directes de la part de nos clients.</p>
             </div>
-        </div> <div class="slide">
+        </div> 
+        
+        <div class="slide" id="crane-animation">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>Animation Chouette et Grue (Illustration Numérique & Motion Design)</h2>
@@ -72,7 +74,7 @@
             </div>
             
         <video class="slide-video" autoplay loop muted playsinline style="object-position: center right !important;">
-            <source src="Le Hibou et Le Héron.mp4" type="video/mp4">
+            <source src="Le Héron et Le Hibou.mp4" type="video/mp4">
         </video>
             
             <div class="slide-info">
@@ -82,7 +84,7 @@
             </div>
         </div>
 
-        <div class="slide">
+        <div class="slide" id="localization">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>Guide d'Études à l'Étranger CSU (Projet de Localisation Culturelle)</h2>
@@ -108,7 +110,7 @@
             </div>
         </div> 
 
-        <div class="slide">
+        <div class="slide" id="litterature">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>"Clair de Lune" (Poème Publié - <i>pacificREVIEW</i>)</h2>
@@ -162,7 +164,7 @@
                     Moons without you, that makes almost three.</p>
                 </div>
             </div>
-        </div> <div class="slide">
+        </div> <div class="slide" id="autoportrait-slide">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
                 <h2>Autoportrait d'Enfance (Dessin au Fusain)</h2>
@@ -178,75 +180,69 @@
                 <p style="margin-top: 15px;">La maîtrise des contrastes, des textures et des proportions acquise grâce à des médiums classiques et exigeants comme le fusain reste une compétence essentielle qui nourrit et structure mon approche du design numérique aujourd'hui.</p>
             </div> 
         </div>
-
-    </div> </section>
+    </div> 
+</section>
 
 <script>
-    let currentSlide = 0;
+let currentSlide = 0;
     const slides = document.querySelectorAll(".slide");
+
+    const hash = window.location.hash; 
+    
+    if (hash) {
+        const targetSlide = document.querySelector(hash);
+        
+        if (targetSlide) {
+            currentSlide = Array.from(slides).indexOf(targetSlide);
+            slides[0].classList.remove("active-slide");
+            slides[currentSlide].classList.add("active-slide");
+        }
+    }
 
     function fitActiveTitle() {
         const activeTitle = slides[currentSlide].querySelector('.slide-header h2');
-        
-        // Hide it while resizing so the user doesn't see the jump
         activeTitle.style.opacity = '0';
         activeTitle.style.fontSize = '2.2rem'; 
-        
-        // The Shrink Ray
         let currentSize = 2.2;
         while (activeTitle.scrollWidth > activeTitle.clientWidth && currentSize > 0.8) {
             currentSize -= 0.1;
             activeTitle.style.fontSize = currentSize + 'rem';
         }
-        
-        // Math is done! Fade it in beautifully.
         setTimeout(() => {
             activeTitle.style.opacity = '1';
         }, 50); 
     }
 
     function changeSlide(direction) {
-        // Fade out the current title before swapping
         slides[currentSlide].querySelector('.slide-header h2').style.opacity = '0';
-        
         slides[currentSlide].classList.remove("active-slide");
         currentSlide = (currentSlide + direction + slides.length) % slides.length;
         slides[currentSlide].classList.add("active-slide");
-        
-        // Re-calculate and fade in the new slide title
         fitActiveTitle(); 
     }
 
 let zoomScrollStart = 0;
     
-// --- CLICK TO ZOOM & MOUSE TO PAN (CORRIGÉ) ---
 document.querySelectorAll('.slide-image, .slide-video').forEach(media => {
     
-    // 1. Gérer le clic (Zoom In/Out)
     media.addEventListener('click', function(e) {
         this.classList.toggle('super-zoomed');
 
         if (!this.classList.contains('super-zoomed')) {
-            // Si on dézoome, on attend la fin de l'animation pour recentrer
             setTimeout(() => {
                 this.style.transformOrigin = 'center center';
             }, 400); 
         } else {
-            // offsetX/offsetY ignorent le zoom CSS, les calculs restent justes !
             const x = (e.offsetX / this.offsetWidth) * 100;
             const y = (e.offsetY / this.offsetHeight) * 100;
             this.style.transformOrigin = `${x}% ${y}%`;
         }
     });
 
-    // 2. Gérer le mouvement de la souris (Panoramique)
     media.addEventListener('mousemove', function(e) {
-        // Le mouvement ne s'active que si l'image est en mode super-zoom
         if (this.classList.contains('super-zoomed')) {
             const x = (e.offsetX / this.offsetWidth) * 100;
             const y = (e.offsetY / this.offsetHeight) * 100;
-            
-            // Déplace doucement le point d'ancrage pour suivre la souris
             this.style.transformOrigin = `${x}% ${y}%`;
         }
     });
