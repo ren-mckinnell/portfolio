@@ -610,43 +610,45 @@ max-width: 1100px;
     transform: scale(1.05); /* Petit effet de rebond */
 }
 
-/* --- EMERGENCY RER MOBILE FIX V2 --- */
+/* --- EMERGENCY RER MOBILE FIX V3 --- */
 @media (max-width: 800px) {
     /* 1. HIDE THE HUGE HEADER TEXT */
     header h1 { 
         display: none !important; 
     }
-    
     header {
         padding: 10px !important;
         justify-content: center !important;
     }
 
-    /* 2. FORCE PURPLE CARDS TO STACK */
-    /* This forces whatever container holds them to go vertical */
-    section, main {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
+    /* 2. FORCE EVERYTHING TO STACK & WRAP */
+    section, main, div {
+        flex-wrap: wrap !important;
     }
 
-    /* Makes the cards full width, stacked on top of each other */
-    div[class*="card"] { 
-        width: 90% !important;
-        max-width: 350px !important;
-        margin: 0 auto 20px auto !important; 
+    /* 3. THE BULLDOZER FOR THE PURPLE CARDS */
+    /* We target any class that might be your cards to be 100% sure */
+    .card, .skill-card, .box, [class*="card"], [class*="skill"] { 
+        width: 90vw !important; /* Force 90% of the screen width */
+        min-width: 300px !important; /* Absolute minimum width */
+        max-width: 400px !important;
+        margin: 20px auto !important; 
+        flex: none !important; /* STOPS FLEXBOX FROM SQUISHING IT */
+        flex-shrink: 0 !important; 
     }
 
-    /* 3. MAKE THE SVGS HUGE */
+    /* 4. MAKE THE TEXT INSIDE THE CARDS READABLE */
+    .card *, .skill-card *, .box *, [class*="card"] *, [class*="skill"] * {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+    }
+
+    /* 5. MAKE THE SVGS HUGE */
     svg, img[src$=".svg"] {
         width: 80px !important;
         height: 80px !important;
         min-width: 80px !important;
-        min-height: 80px !important;
         margin: 10px auto !important;
         display: block !important;
     }
 }
-
-
-
