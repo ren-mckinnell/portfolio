@@ -610,45 +610,32 @@ max-width: 1100px;
     transform: scale(1.05); /* Petit effet de rebond */
 }
 
-/* --- EMERGENCY RER MOBILE FIX V3 --- */
+/* --- EMERGENCY RER MOBILE FIX V4 --- */
 @media (max-width: 800px) {
-    /* 1. HIDE THE HUGE HEADER TEXT */
-    header h1 { 
-        display: none !important; 
-    }
-    header {
-        padding: 10px !important;
-        justify-content: center !important;
+    /* FIX SQUISHED FR BUBBLE */
+    .language-bubble {
+        min-width: 45px !important;
+        min-height: 45px !important;
+        border-radius: 50% !important;
     }
 
-    /* 2. FORCE EVERYTHING TO STACK & WRAP */
-    section, main, div {
-        flex-wrap: wrap !important;
+    /* 1. PORTFOLIO HUGE FIX (CAGES THE VIDEOS/IMAGES) */
+    body { 
+        overflow-x: hidden !important; /* Stops the screen from sliding sideways */
     }
-
-    /* 3. THE BULLDOZER FOR THE PURPLE CARDS */
-    /* We target any class that might be your cards to be 100% sure */
-    .card, .skill-card, .box, [class*="card"], [class*="skill"] { 
-        width: 90vw !important; /* Force 90% of the screen width */
-        min-width: 300px !important; /* Absolute minimum width */
-        max-width: 400px !important;
-        margin: 20px auto !important; 
-        flex: none !important; /* STOPS FLEXBOX FROM SQUISHING IT */
-        flex-shrink: 0 !important; 
+    video, img, iframe, .slide, .portfolio-container {
+        max-width: 100vw !important; /* Forces it to fit the phone screen */
+        height: auto !important;
+        box-sizing: border-box !important;
     }
-
-    /* 4. MAKE THE TEXT INSIDE THE CARDS READABLE */
-    .card *, .skill-card *, .box *, [class*="card"] *, [class*="skill"] * {
-        font-size: 1rem !important;
-        line-height: 1.4 !important;
-    }
-
-    /* 5. MAKE THE SVGS HUGE */
-    svg, img[src$=".svg"] {
-        width: 80px !important;
-        height: 80px !important;
-        min-width: 80px !important;
-        margin: 10px auto !important;
+    
+    /* 2. THE TINY SVGS FIX (ZOOM-IN NUKE) */
+    [class*="card"] svg, 
+    [class*="card"] img {
+        width: 60px !important;
+        height: 60px !important;
+        transform: scale(1.5) !important; /* Physically zooms the icon in by 50% */
+        margin: 15px auto !important;
         display: block !important;
     }
 }
