@@ -1,0 +1,612 @@
+/* GLOBAL VARIABLES & RESET */
+:root {
+    --bg-navy: #244373;     /* Page background */
+    --accent-purple: #b562e8; /* Adjusted slightly to match the avatar border */
+    --accent-cyan: #08F8C5; /* Bright cyan for glow and hover */
+    --hero-box-left: #012030; /* Dark navy behind portrait */
+    --hero-box-right: #13678A; /* Dark cyan behind text */
+    --text-main: #FFFFFF;
+    --text-green: #81D742;  /* Bright green highlight */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-navy);
+    color: var(--text-main);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER & NAVIGATION */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* Reduced vertical padding from 30px */
+    border-bottom: 2px solid var(--accent-purple);
+    
+    /* This centers the header and limits its width */
+    max-width: 1100px; 
+    margin: 0 auto; 
+    width: 90%; 
+}
+
+header h1 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: 'Germania One', system-ui;
+    color: var(--accent-cyan);
+    font-weight: 400; 
+    -webkit-font-smoothing: antialiased;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px; 
+    align-items: center; 
+}
+
+nav a {
+    font-family: 'Open Sans', sans-serif !important; 
+    font-weight: 400 !important; /* RETOUR AU SKINNY ! */
+    font-size: 0.9rem !important; /* Verrouille la taille partout */
+    color: var(--text-main) !important; /* Force le blanc */
+    text-decoration: none !important; /* Enlève les soulignements natifs */
+    transition: all 0.3s ease;
+    letter-spacing: 1px; /* Ajoute un peu d'élégance au texte fin */
+}
+
+nav a:hover {
+    color: var(--accent-cyan) !important;
+    text-shadow: 0 0 8px rgba(8, 248, 197, 0.6); /* Glow doux au lieu de grossir le texte */
+}
+
+/* HERO SECTION - NEW PROFILE CARD */
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0; /* Cut padding in half to save vertical space */
+    margin: 0 auto;
+    max-width: 1100px; /* Must match the header max-width */
+    width: 90%;
+}
+
+.profile-card {
+    background-color: transparent;
+    border-radius: 20px; 
+    /* MATCHES THE GRID: Shrunk slightly to 1050px so cards don't drop to a second row */
+max-width: 1100px;
+    min-height: 320px;
+    width: 95%; /* Margin on sides for smaller laptop screens */
+    display: flex; 
+    flex-direction: row; 
+    overflow: hidden; 
+    box-shadow: 0 0 25px var(--accent-cyan); 
+}
+
+.profile-card:hover {
+    box-shadow: 0 0 35px var(--accent-cyan);
+}
+
+.image-wrapper {
+    background-color: var(--hero-box-left);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 1. SHIFT THE BALANCE: Increased from flex: 0 0 320px to make navy dominant */
+    flex: 0 0 440px; 
+    
+    padding: 0; /* Ensures circle touches the edges */
+}
+
+.circular-avatar {
+    /* 1. FIXED SIZE: Instead of 100%, we use a size that fits the height */
+    /* Adjust this number (e.g., 300px to 350px) until it's as big as you want */
+    width: 340px; 
+    height: 340px;
+    
+    border-radius: 50%; /* Keeps it a circle */
+    object-fit: cover;
+    object-position: center;
+    
+    border: 4px solid var(--accent-purple); 
+    
+    /* Keep your pulse animation here */
+    animation: purplePulse 3s infinite ease-in-out; 
+}
+
+/* --- FRONT PAGE TEXT FADE-IN --- */
+.fade-in-text {
+    opacity: 0;
+    transition: opacity 0.8s ease-in !important;
+}
+
+/* --- Right Section (Dark Cyan & Text) --- */
+.text-content {
+    /* ... keep other settings ... */
+    background-color: var(--hero-box-right);
+    padding: 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    
+    /* 5. NARROWER TEXT BOX: The '1' allows it to take up the remaining (smaller) space */
+    flex: 1; 
+}
+
+.text-content p {
+    color: var(--text-main);
+    font-family: 'Germania One', system-ui;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    letter-spacing: 1px; 
+    margin: 0;
+}
+
+.highlight {
+    color: var(--text-green);
+}
+
+/* PORTFOLIO GRID */
+#portfolio-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Tighter gap to help them fit on one row */
+    padding-top: 20px; /* Pull the grid closer to the hero */
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: nowrap; /* Forces them to stay together on desktop */
+}
+
+.card-link {
+    flex: 1; /* Allows them to shrink slightly to fit the screen */
+    max-width: 330px; /* Slightly narrower to ensure 3-across on laptops */
+    transition: transform 0.3s ease;
+}
+
+.card-link:hover {
+    transform: translateY(-10px);
+}
+
+.card-link svg {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 900px) {
+    #portfolio-grid {
+        flex-wrap: wrap;
+    }
+    .profile-card {
+        flex-direction: column;
+    }
+    .image-wrapper {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+
+/* --- Define the Pulsing Purple Glow Animation --- */
+@keyframes purplePulse {
+    0% {
+        /* Sharp and tight glow */
+        box-shadow: 0 0 15px rgba(181, 98, 232, 0.7);
+    }
+    50% {
+        /* Soft, wide, and bright glow */
+        box-shadow: 0 0 30px rgba(181, 98, 232, 1), 
+                    0 0 60px rgba(144, 48, 179, 0.6);
+    }
+    100% {
+        /* Back to sharp */
+        box-shadow: 0 0 15px rgba(181, 98, 232, 0.7);
+    }
+}
+
+/* --- SLIDESHOW CONTAINER --- */
+#project-slideshow {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.slideshow-panel {
+    background-color: #13678A; /* The dark cyan panel */
+    border-radius: 20px;
+    width: 100%;
+    padding: 30px 40px 20px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* --- SLIDE FUNCTIONALITY --- */
+.slide {
+    display: none; /* Hides all slides by default */
+    animation: fadeEffect 0.5s; /* Smooth fade when swapping */
+}
+
+.slide.active-slide {
+    display: block; /* Only shows the active one */
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+/* --- HEADER & ARROWS --- */
+.slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.slide-header h2 {
+    font-family: 'Germania One', system-ui;
+    color: #08F8C5; /* Cyan accent */
+    font-size: 2.2rem;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1px;
+    flex: 1; /* Pushes arrows to the edges */
+    margin: 0 20px;
+    white-space: nowrap; 
+    overflow: hidden;
+    opacity: 0; /* Hides the text initially */
+    transition: opacity 0.5s ease-in;
+}
+
+.slide-arrow {
+    background-color: #A541FF; /* Purple accent */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slight rounding on the arrow buttons */
+    width: 50px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.slide-arrow:hover {
+    background-color: #b562e8; /* Slightly lighter purple on hover */
+    transform: scale(1.05);
+}
+
+.slide-arrow.prev {
+    transform: scaleX(-1); /* Flips the right arrow to point left */
+}
+
+.slide-arrow.prev:hover {
+    transform: scaleX(-1) scale(1.05); /* Maintains flip while hovering */
+}
+
+/* --- EXPLANATION TEXT --- */
+/* --- EXPLANATION TEXT --- */
+.slide-info {
+    text-align: center;
+    color: white;
+    /* Removed the invalid flex rule */
+}
+
+.slide-info h3 {
+    font-family: 'Germania One', system-ui;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.diamond-divider {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+    color: #FAF9F6; /* Off-white for a subtle contrast */
+}
+
+.slide-info p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify !important; /* This is the magic rule that justifies text! */
+}
+
+/* --- 1. IMAGE RULE (Locked to your Figma specs) --- */
+/* --- CLEAN UNIFIED MEDIA FIX (No Gaps, No Jumping) --- */
+.slide-image, .slide-video {
+    /* 1. Dimensions: Match Figma Ratio exactly */
+    width: 100% !important;
+    aspect-ratio: 1206 / 738 !important;
+    
+    /* 2. Positioning & Filling: Force to fill box and ignore bars */
+    object-fit: cover !important; 
+    object-position: top center !important;
+    
+    /* 3. The "Gap Killer": This stops the baseline shift and extra padding */
+    display: block !important;
+    margin-top: 0 !important;
+    margin-bottom: 25px !important; /* Space for the text below */
+    padding: 0 !important;
+    
+    /* 4. Aesthetics */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    background-color: transparent !important;
+}
+
+/* --- INTERACTIVE PAN & SUPER-ZOOM --- */
+.slide-image, .slide-video {
+    /* Fast transition for smooth panning */
+    transition: transform 0.4s ease-out, transform-origin 0.2s ease-out !important;
+    cursor: zoom-in;
+    transform-origin: center center; /* Default center point */
+}
+
+/* Hover zoom ONLY applies if not clicked */
+.slide-image:not(.super-zoomed):hover, .slide-video:not(.super-zoomed):hover {
+    transform: scale(1.15) !important;
+    z-index: 100 !important; 
+}
+
+/* Super zoom takes priority when clicked */
+.super-zoomed {
+    transform: scale(2) !important;
+    z-index: 200 !important;
+    cursor: zoom-out !important;
+}
+
+#autoportrait-enfance.super-zoomed {
+    transform: scale(3) !important;
+}
+
+/* =========================================
+   PAGE: À PROPOS (TERMINAL WIDGET) 
+   ========================================= */
+
+/* --- TERMINAL WINDOW --- */
+#terminal-window {
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    max-width: 1400px; /* On l'élargit encore un peu */
+    width: 95%; /* Prend presque toute la largeur disponible */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 25px var(--accent-cyan);
+    margin-bottom: 30px;
+}
+
+#terminal-window:hover {
+    box-shadow: 0 0 35px var(--accent-cyan);
+}
+
+/* Terminal Header */
+#terminal-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 2px solid var(--accent-purple);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background-color: #FF5F56; }
+.dot.yellow { background-color: #FFBD2E; }
+.dot.green { background-color: #27C93F; }
+
+/* Terminal Body */
+#terminal-body {
+    display: flex;
+    padding: 50px;
+    gap: 50px;
+}
+
+#terminal-image-wrapper {
+    flex: 1; /* Réduit de 2 à 1 pour laisser de la place au texte */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligne l'image en haut pour coller au texte */
+    padding-top: 10px;
+}
+
+#profile-image {
+    width: 100%; /* Elle prendra toute la largeur de son wrapper (flex: 1) */
+    max-width: 500px; /* Limite pour ne pas devenir gigantesque sur écran ultra-large */
+    border-radius: 15px;
+    object-fit: cover;
+    animation: purplePulse 3s infinite ease-in-out;
+}
+
+/* Text Section */
+#terminal-text-content {
+    flex: 2; /* Augmenté de 1 à 2 : le texte a maintenant 2x plus de place */
+    color: #81d742;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 0.95rem; /* Légère réduction pour aider à tout faire tenir en hauteur */
+    line-height: 1.5;
+    text-align: justify;
+}
+
+#terminal-text-content .highlight {
+    font-weight: bold;
+    color: #9cf55b; /* Slightly brighter green for bold text */
+}
+
+#terminal-prompt {
+    margin-top: 20px;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+/* --- DOWNLOAD BUTTON --- */
+.download-button {
+    background-color: var(--accent-purple);
+    color: #FFFFFF;
+    padding: 15px 35px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(181, 98, 232, 0.7);
+    animation: purpleGlow 1.5s infinite ease-in-out;
+}
+
+@keyframes purpleGlow {
+    0% { box-shadow: 0 0 10px rgba(181, 98, 232, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(181, 98, 232, 1); }
+    100% { box-shadow: 0 0 10px rgba(181, 98, 232, 0.5); }
+}
+
+/* --- MOBILE RESPONSIVE FOR TERMINAL --- */
+@media (max-width: 900px) {
+    #terminal-body {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    #terminal-image-wrapper {
+        width: 80%;
+    }
+}
+
+#cv-button {
+    align-self: flex-end;
+    margin-right: 5%;
+    /* On augmente l'espace ici pour séparer les lueurs */
+    margin-top: 40px; 
+    margin-bottom: 20px; 
+}
+
+/* =========================================
+   PAGE: CONTACT
+   ========================================= */
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Centre la carte verticalement */
+    padding: 20px;
+}
+
+.contact-card {
+    background-color: #1a1a1a; /* Même fond off-black que le terminal */
+    border-radius: 20px;
+    padding: 50px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 25px var(--accent-cyan);
+    border: 2px solid var(--accent-purple);
+}
+
+.contact-card h2 {
+    font-family: 'Germania One', system-ui;
+    color: var(--text-green);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start; /* Aligne les icônes à gauche */
+    padding-left: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.contact-item .icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px var(--accent-cyan)); /* Petit glow sur les emojis */
+}
+
+.contact-item a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent-cyan);
+    text-decoration: underline;
+}
+
+/* Version Mobile */
+@media (max-width: 600px) {
+    .contact-card {
+        padding: 30px 15px;
+    }
+    .contact-item {
+        font-size: 0.9rem;
+    }
+}
+
+.language-bubble {
+    background-color: var(--accent-cyan);
+    color: var(--bg-navy) !important; /* Garde le texte bleu foncé même si c'est un lien */
+    font-family: 'Germania One', system-ui !important; /* Garde ton choix de police exprès */
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 40px;
+    text-decoration: none !important; /* Pas de soulignement sur le FR */
+    transition: all 0.3s ease;
+}
+
+.language-bubble:hover {
+    /* Le fameux glow quand on passe la souris ! */
+    box-shadow: 0 0 15px var(--accent-cyan), 0 0 30px var(--accent-cyan);
+    transform: scale(1.05); /* Petit effet de rebond */
+}
+
