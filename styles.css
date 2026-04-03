@@ -673,3 +673,40 @@ max-width: 1100px;
         box-sizing: border-box !important;
     }
 }
+
+@media (max-width: 900px) {
+    /* 1. MASSIVE PORTRAIT */
+    .image-wrapper {
+        padding: 30px 0 !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+    .circular-avatar {
+        width: 300px !important; /* Huge! */
+        height: 300px !important;
+        max-width: 90vw !important;
+    }
+
+    /* 2. STACK THE GRID SO SVGS CAN BREATHE */
+    #portfolio-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+    }
+    .card-link {
+        width: 90vw !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
+    }
+
+    /* 3. ENORMOUS SVGS (ZOOM NUKE) */
+    .card-link svg {
+        width: 120px !important; 
+        height: auto !important;
+        transform: scale(1.8) !important; /* Physically multiplies the size */
+        margin: 25px auto !important;
+        display: block !important;
+    }
+}
+
