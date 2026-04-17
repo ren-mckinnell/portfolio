@@ -47,9 +47,7 @@
             
             <a href="https://youtu.be/bSIpbTnfNA4" target="_blank" class="slide-image youtube-link-wrapper" style="display: block; position: relative; overflow: hidden; padding: 0; text-decoration: none;">
                 <img src="https://img.youtube.com/vi/bSIpbTnfNA4/maxresdefault.jpg" alt="Runaway Games Video" class="yt-thumb-img" style="width: 100%; height: 100%; object-fit: cover !important; display: block;">
-                <div class="yt-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #FF0000; color: white; padding: 15px 30px; border-radius: 10px; font-weight: bold; font-family: 'Oxanium', sans-serif; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-                    ▶ WATCH ON YOUTUBE
-                </div>
+                <div class="yt-play-btn" data-key="youtube_btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #FF0000; color: white; padding: 15px 30px; border-radius: 10px; font-weight: bold; font-family: 'Oxanium', sans-serif; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"></div>
             </a>
 
             <div class="slide-info">
@@ -57,7 +55,7 @@
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
                 <p data-key="proj1_desc"></p>
                 <div style="margin-top: 25px;">
-                    <a href="https://www.runaway.games/product/the-price-is-precise" target="_blank" class="download-button">🌐 Explore The Price is Precise (Runaway Games)</a>
+                    <a href="https://www.runaway.games/product/the-price-is-precise" target="_blank" class="download-button" data-key="proj1_btn"></a>
                 </div>
             </div> 
         </div>
@@ -206,13 +204,24 @@
 let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 
+// INSTANT HASH CHECK: Runs immediately before the page paints to prevent flashing
+const hash = window.location.hash; 
+if (hash) {
+    const targetSlide = document.querySelector(hash);
+    if (targetSlide) {
+        document.querySelector(".active-slide").classList.remove("active-slide");
+        currentSlide = Array.from(slides).indexOf(targetSlide);
+        slides[currentSlide].classList.add("active-slide");
+    }
+}
+
 function fitActiveTitle() {
     const activeSlide = document.querySelector(".slide.active-slide");
     if (!activeSlide) return;
     const title = activeSlide.querySelector('h4');
     if (!title) return;
 
-    // DYNAMIC TITLE COLORING (Parentheses turn white)
+    // DYNAMIC TITLE COLORING
     let htmlContent = title.innerHTML;
     if (!htmlContent.includes('header-paren') && htmlContent.includes('(')) {
         title.innerHTML = htmlContent.replace(/(\(.*?\))/g, '<span class="header-paren">$1</span>');
@@ -235,21 +244,9 @@ function changeSlide(direction) {
     fitActiveTitle();
 }
 
-window.onload = fitActiveTitle;
+window.addEventListener('load', fitActiveTitle);
+window.addEventListener('resize', fitActiveTitle);
 window.addEventListener('languageChanged', fitActiveTitle);
-
-window.addEventListener('load', () => {
-    const hash = window.location.hash; 
-    if (hash) {
-        const targetSlide = document.querySelector(hash);
-        if (targetSlide) {
-            slides[0].classList.remove("active-slide");
-            currentSlide = Array.from(slides).indexOf(targetSlide);
-            slides[currentSlide].classList.add("active-slide");
-        }
-    }
-    fitActiveTitle();
-});
 
 // ORIGINAL ZOOM FUNCTION
 document.querySelectorAll('.slide-image.zoom-on-hover, .slide-video').forEach(media => {
