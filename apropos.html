@@ -13,25 +13,31 @@
 </head>
 
 <body>
-    <header>
-        <div id="tagline">
-            <h1>Ren McKINNELL / À Propos</h1>
-        </div>
-        <a href="index.html" class="language-bubble">FR</a>
-        <nav>
-            <ul>
-                <li><a href="projets.html">PORTFOLIO</a></li>
-                <li><a href="apropos.html">À PROPOS</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
 
-<main style="display: flex; flex-direction: column; align-items: center; padding: 60px 5%;">
-    
-    <a href="index.html" style="text-decoration: none; color: inherit; width: 100%; display: flex; justify-content: center;">
-        <div id="terminal-window" style="cursor: pointer;">
-            <div id="terminal-header">
+<header id="main-header">
+    <a href="index.html" class="home-link">
+        <h1><span class="name-highlight">Ren McKINNELL</span> <span class="page-slash">/ À Propos</span></h1>
+    </a>
+
+    <div class="lang-switcher-container">
+        <button class="lang-btn sub-btn left" style="--dir: -55px" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn main-btn">FR</button>
+        <button class="lang-btn sub-btn right" style="--dir: 55px" onclick="switchLanguage('es')">ES</button>
+    </div>
+
+<nav id="main-nav">
+    <ul>
+        <li><a href="projets.html" data-key="nav_portfolio"></a></li>
+        <li><a href="apropos.html" data-key="nav_about"></a></li>
+        <li><a href="contact.html" data-key="nav_contact"></a></li>
+    </ul>
+</nav>
+
+
+    </header> <main class="apropos-main">
+        <a href="index.html" class="terminal-link">
+            <div id="terminal-window">
+                <div id="terminal-header">
                 <div class="terminal-dots">
                     <div class="dot red"></div>
                     <div class="dot yellow"></div>
@@ -40,30 +46,27 @@
             </div>
             
             <div id="terminal-body">
-                <div id="terminal-image-wrapper">
+<div id="terminal-image-wrapper">
                     <img id="profile-image" src="RAINBOWREINE.webp" alt="Portrait de Ren McKinnell">
                 </div>
-                
                 <div id="terminal-text-content">
-                    <p>
+                    <p data-key="apropos_text">
+                        <span class="highlight">Ren McKinnell</span> est une artiste et développeuse de contenu numérique trilingue basée à Paris.<br><br>
+                
+                        Sa perspective profondément multiculturelle s’est forgée à San Diego, en Californie aux portes du Mexique, au confluent de ses racines franco-canadiennes.<br><br>
 
+                        Elle a obtenu sa Licence en langues étrangères (français et espagnol), se hissant dans le top 1 % de sa promotion, une réussite complétée par le prix « Coup de Cœur » de la mairie de Marseille, reçu pour une lecture théâtrale lors de la Semaine de la Francophonie. Par la suite, elle a passé un an à Bogotá pour y enseigner l'anglais. C’est lors de son Master 1 à l’ESSCA que la découverte de la programmation a provoqué un véritable déclic. Elle a alors choisi de pivoter vers le Master 2 CAWEB de l’Université de Strasbourg : suivi à distance, ce cursus lui permet de conjuguer une formation technique de pointe avec son développement professionnel à Paris.<br><br>
+
+                        Aujourd'hui superviseuse chez Runaway Games, elle gère des projets marketing et de revue vidéo, une expérience qui renforce sa vision stratégique du numérique. Pour Ren, la localisation est une ingénierie globale qui fusionne le design d'interface (UI/UX), l'architecture du code et l'adaptation culturelle. Son objectif est de bâtir des passerelles technologiques fluides et universellement accessibles.
                     </p>
-                    <p style="margin-top: 15px;">
-                    <span class="highlight">Ren McKinnell</span> est une artiste et développeuse de contenu numérique trilingue basée à Paris.<br><br>
-
-Sa perspective profondément multiculturelle s’est forgée à San Diego, en Californie aux portes du Mexique, au confluent de ses racines franco-canadiennes.<br><br>
-
-Elle a obtenu sa Licence en langues étrangères (français et espagnol), se hissant dans le top 1 % de sa promotion, une réussite complétée par le prix « Coup de Cœur » de la mairie de Marseille, reçu pour une lecture théâtrale lors de la Semaine de la Francophonie. Par la suite, elle a passé un an à Bogotá pour y enseigner l'anglais. C’est lors de son Master 1 à l’ESSCA que la découverte de la programmation a provoqué un véritable déclic. Elle a alors choisi de pivoter vers le Master 2 CAWEB de l’Université de Strasbourg : suivi à distance, ce cursus lui permet de conjuguer une formation technique de pointe avec son développement professionnel à Paris.<br><br>
-
-Aujourd'hui superviseuse chez Runaway Games, elle gère des projets marketing et de revue vidéo, une expérience qui renforce sa vision stratégique du numérique. Pour Ren, la localisation est une ingénierie globale qui fusionne le design d'interface (UI/UX), l'architecture du code et l'adaptation culturelle. Son objectif est de bâtir des passerelles technologiques fluides et universellement accessibles.
-                    </div>
+                </div>
             </div>
         </div>
     </a>
 
-    <a href="Ren McKinnell - CV Alternance.pdf" id="cv-button" class="download-button" target="_blank" download>Télécharger son CV</a>
-    
-</main>
+    <a href="Ren McKinnell - CV Alternance.pdf" id="cv-button" class="download-button" target="_blank" download data-key="cv_btn"></a>
 
+</main>
+<script src="i18n.js"></script>
 </body>
 </html>
