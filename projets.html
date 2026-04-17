@@ -12,242 +12,261 @@
 
 </head>
 <body>
-    <header>
-        <div id="tagline">
-            <h1>Ren McKINNELL / Portfolio</h1>
-        </div>
-        <a href="index.html" class="language-bubble">FR</a>
-            <nav>
-            <ul>
-                <li><a href="projets.html">PORTFOLIO</a></li>
-                <li><a href="apropos.html">À PROPOS</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>  
+
+<header id="main-header">
+    <a href="index.html" class="home-link">
+        <h1><span class="name-highlight">Ren McKINNELL</span> <span class="page-slash">/ Portfolio</span></h1>
+    </a>
+
+    <div class="lang-switcher-container">
+        <button class="lang-btn sub-btn left" style="--dir: -55px" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn main-btn">FR</button>
+        <button class="lang-btn sub-btn right" style="--dir: 55px" onclick="switchLanguage('es')">ES</button>
+    </div>
+
+<nav id="main-nav">
+    <ul>
+        <li><a href="projets.html" data-key="nav_portfolio"></a></li>
+        <li><a href="apropos.html" data-key="nav_about"></a></li>
+        <li><a href="contact.html" data-key="nav_contact"></a></li>
+    </ul>
+</nav>
+
+</header>
+
+<main>  
 <section id="project-slideshow">
     <div class="slideshow-panel">
         
-        <div class="slide active-slide" id="i18n">
+        <div class="slide active-slide" id="runaway-video-slide">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>Jeu Vidéo JavaScript <i>The Price is Precise!</i> (L'ingénierie de la Localisation)</h2>
+                <h4 data-key="proj1_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
             
-            <video class="slide-video" autoplay loop muted playsinline>
-                <source src="JavaScript PriceisPrecise.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            
+            <a href="https://youtu.be/bSIpbTnfNA4" target="_blank" class="slide-image youtube-link-wrapper" style="display: block; position: relative; overflow: hidden; padding: 0; text-decoration: none;">
+                <img src="https://img.youtube.com/vi/bSIpbTnfNA4/maxresdefault.jpg" alt="Runaway Games Video" class="yt-thumb-img" style="width: 100%; height: 100%; object-fit: cover !important; display: block;">
+                <div class="yt-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #FF0000; color: white; padding: 15px 30px; border-radius: 10px; font-weight: bold; font-family: 'Oxanium', sans-serif; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    ▶ WATCH ON YOUTUBE
+                </div>
+            </a>
+
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>Développé de toutes pièces, <i>The Price is Precise!</i> est un jeu web dynamique en JavaScript conçu pour démontrer mes compétences en ingénierie de localisation (i18n). M'appuyant sur mon profil trilingue, j'ai codé un système de basculement linguistique qui permet de traduire l'interface entre l'anglais, le français et l'espagnol en temps réel, sans aucun rechargement de page. Pour le déployer de manière sécurisée, j'ai créé un environnement sur mesure avec un thème parent-enfant sous WordPress, en utilisant WPCode pour gérer les injections JS, CSS et HTML sans compromettre l'architecture globale du site. C'est un bac à sable coloré et nostalgique, idéal pour expérimenter avec la logique, les tableaux (arrays) et l'expérience utilisateur interculturelle... avec quelques petits détails de version MVP assumés, pour le charme !</p>
-            </div>
+                <p data-key="proj1_desc"></p>
+                <div style="margin-top: 25px;">
+                    <a href="https://www.runaway.games/product/the-price-is-precise" target="_blank" class="download-button">🌐 Explore The Price is Precise (Runaway Games)</a>
+                </div>
+            </div> 
         </div>
 
         <div class="slide" id="marketing-kit">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>Kits de Marketing Numérique (Conception-Rédaction & Création de Contenu)</h2>
+                <h4 data-key="proj2_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
-            
-            <img src="1080x720 Listing Images (1).png" alt="Runway Games Jeoparty" class="slide-image">
-            
+            <img src="1080x720 Listing Images (1).png" alt="Runway Games" class="slide-image zoom-on-hover">
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>En tant que superviseuse chez Runway Games, je dirige la conception-rédaction et la création de contenu pour nos campagnes numériques. Mon rôle consiste à réviser, affiner et optimiser les supports marketing pour les lancements de nos nouveaux jeux avant leur publication sur notre plateforme, <a href="https://runaway.games" target="_blank" style="color: var(--accent-cyan); text-decoration: underline; font-weight: bold;">runaway.games</a>, où les entreprises réservent directement nos expériences de team-building. L'impact de cette stratégie est immédiat : à titre d'exemple, moins de 24 heures après le lancement du kit marketing pour notre édition "Journée Internationale des Droits des Femmes" du jeu <em>Jeoparty</em> (illustrée ci-dessus), nous enregistrions déjà de nouvelles réservations directes de la part de nos clients.</p>
+                <p data-key="proj2_desc"></p>
             </div>
         </div> 
-        
-        <div class="slide" id="crane-animation">
+
+        <div class="slide" id="ferragamo-slide">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>Animation Chouette (Illustration Numérique & Motion Design)</h2>
+                <h4 data-key="proj3_title"></h4>
+                <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
+            </div>
+            <img src="Company Ferragamo Project Coverpage - final.png" alt="Ferragamo" class="slide-image zoom-on-hover" style="object-fit: contain !important; background-color: #2C2F33 !important;">
+            <div class="slide-info">
+                <h3 data-key="proj_subtitle"></h3>
+                <div class="diamond-divider">✧ · ✧ · ✧</div>
+                <p data-key="proj3_desc"></p>
+                
+                <h5 class="accessible-title" data-key="proj3_sample_title"></h5>
+                <div class="accessible-box" data-key="proj3_sample_text"></div>
+
+                <div style="margin-top: 20px;">
+                    <a href="ST07-McKINNELL REN-GROUP 6-FERRAGAMO.pdf" class="download-button" target="_blank" data-key="proj3_btn"></a>
+                </div>
+            </div> 
+        </div>
+
+        <div class="slide" id="spotify-slide">
+            <div class="slide-header">
+                <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
+                <h4 data-key="proj4_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
             
-        <video class="slide-video" autoplay loop muted playsinline style="object-position: center right !important;">
-            <source src="Le Héron et Le Hibou.mp4" type="video/mp4">
-        </video>
-            
+            <div class="slide-image" style="overflow-x: auto; overflow-y: hidden; background-color: #2C2F33 !important; padding: 0;">
+                <img src="Python Spotify Visualizations.png" alt="Spotify Analysis" style="height: 100%; width: auto; max-width: none; display: block;">
+            </div>
+
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>Inspirée par les paysages et la faune de mon enfance à San Diego en Californie, cette œuvre numérique met en scène la rencontre poétique entre une chouette et une grue. J'ai peint et animé chaque élément minutieusement à la main sur Adobe Photoshop, alliant les techniques d'illustration traditionnelle au mouvement numérique. Ce projet reflète ma passion pour l'art visuel et ma capacité à donner vie à des récits visuels grâce au motion design.</p>
+                <p data-key="proj4_desc"></p>
+            </div> 
+        </div>
+
+        <div class="slide" id="i18n">
+            <div class="slide-header">
+                <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
+                <h4 data-key="proj5_title"></h4>
+                <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
+            </div>
+            <video class="slide-video" autoplay loop muted playsinline>
+                <source src="JavaScript PriceisPrecise.mp4" type="video/mp4">
+            </video>
+            <div class="slide-info">
+                <h3 data-key="proj_subtitle"></h3>
+                <div class="diamond-divider">✧ · ✧ · ✧</div>
+                <p data-key="proj5_desc"></p>
             </div>
         </div>
 
         <div class="slide" id="localization">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>Guide d'Études à l'Étranger CSU (Projet de Localisation Culturelle)</h2>
+                <h4 data-key="proj6_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
-            
-            <img src="CSU Guide Preview.png" alt="CSU Guide" class="slide-image">
-         
+            <img src="CSU Guide Preview.png" alt="CSU Guide" class="slide-image zoom-on-hover">
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>En tant qu'alumna du programme international de la California State University (CSU), j'ai conçu et localisé ce guide complet pour les étudiants arrivant à Aix-en-Provence. Au-delà d'une simple traduction, ce projet est un exercice de localisation culturelle : il adapte les conseils pratiques, les nuances administratives et la vie quotidienne française pour un public étudiant californien. Ce document sert de pont entre deux systèmes académiques et cultures, facilitant l'intégration des étudiants grâce à une approche authentique et un design intuitif, fruit de ma propre expérience d'immersion totale pendant un an dans le sud de la France.</p>
-                
-                <p style="margin-top: 15px;">Ma directrice de programme a salué ce travail pour son <b>attention aux détails</b> et son <b>esthétique engageante</b>. Preuve de sa pertinence et de sa qualité, ce guide est <b>toujours utilisé officiellement par l'université aujourd'hui</b> pour orienter les nouvelles cohortes d'étudiants.</p>
-                
-                <p style="margin-top: 15px;">Ce projet témoigne de mon aptitude à transformer des processus bureaucratiques complexes en une expérience utilisateur (UX) fluide, visuelle et surtout pérenne.</p>
-
+                <p data-key="proj6_desc"></p>
                 <div style="margin-top: 25px;">
-                    <a href="CSU Aix-en-Provence Study Abroad Guide.pdf" target="_blank" download style="color: var(--accent-cyan); text-decoration: underline; font-weight: bold; font-family: 'Open Sans', sans-serif;">
-                        📥 Télécharger le Guide d'Accueil (PDF)
-                    </a>
+                    <a href="CSU Aix-en-Provence Study Abroad Guide.pdf" target="_blank" download class="download-button" data-key="proj6_btn"></a>
                 </div>
             </div>
         </div> 
 
+        <div class="slide" id="owl-animation-slide">
+            <div class="slide-header">
+                <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
+                <h4 data-key="proj7_title"></h4>
+                <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
+            </div>
+            <video class="slide-video" autoplay loop muted playsinline style="object-position: center right !important;">
+                <source src="Le Héron et Le Hibou.mp4" type="video/mp4">
+            </video>
+            <div class="slide-info">
+                <h3 data-key="proj_subtitle"></h3>
+                <div class="diamond-divider">✧ · ✧ · ✧</div>
+                <p data-key="proj7_desc"></p>
+            </div>
+        </div>
+
         <div class="slide" id="litterature">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>"Clair de Lune" (Poème Publié - <i>pacificREVIEW</i>)</h2>
+                <h4 data-key="proj8_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
-            
-            <img src="ClairdeLunePortfolio.jpg" alt="Poème Clair de Lune et lettre de motivation" class="slide-image zoom-on-hover">
-
+            <img src="ClairdeLunePortfolio.jpg" alt="Poem" class="slide-image zoom-on-hover">
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>Publié dans l'édition 2024 de la revue littéraire américaine <em>pacificREVIEW</em>, "Clair de Lune" est une œuvre poétique très personnelle qui explore la fin de l'enfance et le passage complexe à la vie de femme. Comme je l'explique dans ma lettre d'intention aux éditeurs, le poème utilise les cycles lunaires et la figure du Bossu de Notre-Dame comme métaphores de cette transition. Il illustre la difficulté de grandir, le deuil de l'innocence, et la dualité de se sentir parfois prisonnière de ses propres limites tout en cherchant à révéler sa véritable identité.</p>
-                
+                <p data-key="proj8_desc"></p>
                 <div style="margin-top: 25px;">
-                    <a href="https://www.amazon.com/pacific-REVIEW-2024-Review-Annual/dp/1938537688" target="_blank" style="color: var(--accent-cyan); text-decoration: underline; font-weight: bold; font-family: 'Open Sans', sans-serif;">
-                        🛒 Se procurer l'édition imprimée sur Amazon
-                    </a>
+                    <a href="https://www.amazon.com/pacific-REVIEW-2024-Review-Annual/dp/1938537688" target="_blank" class="download-button" data-key="proj8_btn"></a>
                 </div>
 
-                <h4 style="margin-top: 40px; color: #D19DFF; font-family: 'Germania One', system-ui; font-size: 1.5rem; text-align: center;">Texte Original (Accessibilité)</h4>
-                
-                <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px; margin-top: 15px; font-family: 'Open Sans', sans-serif; line-height: 1.8; font-size: 0.95rem;">
-                    <p style="text-align: center; font-weight: bold; font-style: italic; margin-bottom: 20px;">"Clair de Lune" by Ren Alexandra McKinnell</p>
-                    
-                    <p>I count the moons without you;<br>
-                    I have two nights left until I leave.<br><br>
-                    I cry to the mother in my head<br>
-                    Who didn’t hold me gently.<br><br></p>
+                <h5 class="accessible-title" data-key="proj8_poem_title"></h5>
+                <div class="accessible-box" data-key="proj8_poem_text"></div>
 
-                    <p>One day you tell yourself you will never be like her—<br>
-                    And the other,<br>
-                    You find yourself standing<br>
-                    In a fur coat, used tissues in your pocket,<br>
-                    Drinking coffee with your black leather gloves,<br>
-                    Waiting to pick up the kids.<br><br></p>
-
-                    <p>One cold morning in France, I woke up<br>
-                    And realized I was a grown woman.<br>
-                    “Mommy, mommy,<br>
-                    How did this happen?”<br>
-                    I have spent eight years running from pain.<br><br></p>
-
-                    <p>I am watching myself change:<br>
-                    Full, empty, carved.<br>
-                    A pale fingernail of light, she follows me—<br>
-                    A quasi-formed self that begs to be revealed.<br>
-                    I listen from the bell tower,<br>
-                    Watch the days fly by on the calendar.<br>
-                    She is glistening, blunt and seemingly cleaved by the center:<br>
-                    White tree trunk of truth.<br>
-                    Moons without you, that makes almost three.</p>
-                </div>
             </div>
-        </div> <div class="slide" id="autoportrait-slide">
+        </div> 
+        
+        <div class="slide" id="autoportrait-slide">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
-                <h2>Autoportrait d'Enfance (Dessin au Fusain)</h2>
+                <h4 data-key="proj9_title"></h4>
                 <button class="slide-arrow next" onclick="changeSlide(1)">&#10140;</button>
             </div>
-            
-          <img id="autoportrait-enfance" src="BabyPerseffy-plain.jpg" alt="Autoportrait au fusain à 4 ans" class="slide-image zoom-on-hover" style="object-fit: contain !important; background-color: #2C2F33 !important;">
-            
+            <img src="BabyPerseffy-plain.jpg" alt="Portrait" class="slide-image zoom-on-hover" style="object-fit: contain !important; background-color: #2C2F33 !important;">
             <div class="slide-info">
-                <h3>Explication du Projet</h3>
+                <h3 data-key="proj_subtitle"></h3>
                 <div class="diamond-divider">✧ · ✧ · ✧</div>
-                <p>Ce projet est un autoportrait grand format réalisé entièrement au fusain, capturant une photographie de moi à l'âge de quatre ans. Bien que mon travail actuel se concentre principalement sur la création numérique, l'illustration vectorielle et le code, cette œuvre illustre mes fondations en art traditionnel.</p>
-                <p style="margin-top: 15px;">La maîtrise des contrastes, des textures et des proportions acquise grâce à des médiums classiques et exigeants comme le fusain reste une compétence essentielle qui nourrit et structure mon approche du design numérique aujourd'hui.</p>
+                <p data-key="proj9_desc"></p>
             </div> 
         </div>
-    </div> 
+
+    </div>
 </section>
 
 <script>
 let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slide");
 
+function fitActiveTitle() {
+    const activeSlide = document.querySelector(".slide.active-slide");
+    if (!activeSlide) return;
+    const title = activeSlide.querySelector('h4');
+    if (!title) return;
+
+    // DYNAMIC TITLE COLORING (Parentheses turn white)
+    let htmlContent = title.innerHTML;
+    if (!htmlContent.includes('header-paren') && htmlContent.includes('(')) {
+        title.innerHTML = htmlContent.replace(/(\(.*?\))/g, '<span class="header-paren">$1</span>');
+    }
+
+    title.style.fontSize = "2.2rem";
+    title.style.opacity = "1";
+    const container = activeSlide.querySelector('.slide-header');
+    let size = 2.2;
+    while (title.scrollWidth > (container.clientWidth - 120) && size > 1.0) {
+        size -= 0.1;
+        title.style.fontSize = size + "rem";
+    }
+}
+
+function changeSlide(direction) {
+    slides[currentSlide].classList.remove("active-slide");
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    slides[currentSlide].classList.add("active-slide");
+    fitActiveTitle();
+}
+
+window.onload = fitActiveTitle;
+window.addEventListener('languageChanged', fitActiveTitle);
+
+window.addEventListener('load', () => {
     const hash = window.location.hash; 
-    
     if (hash) {
         const targetSlide = document.querySelector(hash);
-        
         if (targetSlide) {
-            currentSlide = Array.from(slides).indexOf(targetSlide);
             slides[0].classList.remove("active-slide");
+            currentSlide = Array.from(slides).indexOf(targetSlide);
             slides[currentSlide].classList.add("active-slide");
         }
     }
+    fitActiveTitle();
+});
 
-    function fitActiveTitle() {
-        const activeTitle = slides[currentSlide].querySelector('.slide-header h2');
-        activeTitle.style.opacity = '0';
-        activeTitle.style.fontSize = '2.2rem'; 
-        let currentSize = 2.2;
-        while (activeTitle.scrollWidth > activeTitle.clientWidth && currentSize > 0.8) {
-            currentSize -= 0.1;
-            activeTitle.style.fontSize = currentSize + 'rem';
-        }
-        setTimeout(() => {
-            activeTitle.style.opacity = '1';
-        }, 50); 
-    }
-
-    function changeSlide(direction) {
-        slides[currentSlide].querySelector('.slide-header h2').style.opacity = '0';
-        slides[currentSlide].classList.remove("active-slide");
-        currentSlide = (currentSlide + direction + slides.length) % slides.length;
-        slides[currentSlide].classList.add("active-slide");
-        fitActiveTitle(); 
-    }
-
-let zoomScrollStart = 0;
-    
-document.querySelectorAll('.slide-image, .slide-video').forEach(media => {
-    
+// ORIGINAL ZOOM FUNCTION
+document.querySelectorAll('.slide-image.zoom-on-hover, .slide-video').forEach(media => {
     media.addEventListener('click', function(e) {
         this.classList.toggle('super-zoomed');
-
         if (!this.classList.contains('super-zoomed')) {
-            setTimeout(() => {
-                this.style.transformOrigin = 'center center';
-            }, 400); 
+            setTimeout(() => { this.style.transformOrigin = 'center center'; }, 400); 
         } else {
             const x = (e.offsetX / this.offsetWidth) * 100;
             const y = (e.offsetY / this.offsetHeight) * 100;
             this.style.transformOrigin = `${x}% ${y}%`;
         }
     });
-
-    media.addEventListener('mousemove', function(e) {
-        if (this.classList.contains('super-zoomed')) {
-            const x = (e.offsetX / this.offsetWidth) * 100;
-            const y = (e.offsetY / this.offsetHeight) * 100;
-            this.style.transformOrigin = `${x}% ${y}%`;
-        }
-    });
 });
-
-window.onload = fitActiveTitle;
 </script>
 </main>
+
+<script src="i18n.js"></script>
 </body>
 </html>
