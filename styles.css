@@ -1,3 +1,19 @@
+/* =========================================
+   SMOOTH PAGE LOAD ANIMATION
+   ========================================= */
+body {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1; 
+    }
+}
+
 :root {
     --bg-navy: #244373;     /* Page background */
     --accent-purple: #b562e8;
@@ -1112,3 +1128,41 @@ body {
 .contact-container { padding: 10px !important; min-height: 85vh; }
 .console-container { padding: 30px !important; }
 .console-grid { gap: 15px !important; }
+
+/* =========================================
+   MASTER PERFECTIONIST SYNC (SURGICAL)
+   ========================================= */
+
+/* 1. Force exact same transition timing for everything in the hero */
+.profile-card, 
+.fade-in-text, 
+.highlight,
+.circular-avatar {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#portfolio-grid .lang-img {
+    /* Kill the transition on the images so the language swap is INSTANT */
+    transition: none !important; 
+    will-change: contents;
+    backface-visibility: hidden;
+}
+
+/* Keep the hover movement snappy but smooth */
+#portfolio-grid .card-link {
+    transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1) !important;
+    display: inline-block;
+}
+
+/* 3. CV BUTTON: Matches your #cv-button and .download-button */
+#cv-button.download-button {
+    border: 1px solid #D19DFF !important; /* Your Purple */
+    color: #D19DFF !important;
+    background: rgba(209, 157, 255, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+#cv-button.download-button:hover {
+    background: rgba(209, 157, 255, 0.2) !important;
+    box-shadow: 0 0 15px rgba(209, 157, 255, 0.4) !important;
+}
