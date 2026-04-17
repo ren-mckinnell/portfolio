@@ -13,6 +13,118 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* --- THE GIANT CYAN CIRCLE --- */
+.hero-circle-hub {
+    background-color: #45C4B0; /* The exact Cyan you requested */
+    width: 340px; 
+    height: 340px;
+    border-radius: 50%; /* Perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--accent-purple); 
+    animation: purplePulse 3s infinite ease-in-out; /* Keeps your original glow */
+    box-shadow: 0 0 15px rgba(181, 98, 232, 0.7);
+}
+
+/* --- THE BUTTONS INSIDE THE CIRCLE --- */
+.og-lang-hub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+}
+
+.og-lang-btn {
+    background: none;
+    border: none;
+    font-family: 'Oxanium', system-ui;
+    font-size: 2.5rem; 
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25); /* Deeply faded inactive state */
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    padding: 0 5px;
+}
+
+.hub-divider {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.og-lang-btn.active-lang { 
+    color: #ffffff; 
+    text-shadow: 
+         0 2px 4px rgba(1, 32, 48, 0.9),
+         0 0 15px rgba(255, 255, 255, 0.8),
+         0 0 30px #45C4B0;
+    transform: scale(1.1);
+}
+
+.og-lang-hub:hover .og-lang-btn.active-lang {
+    color: rgba(255, 255, 255, 0.25); 
+    text-shadow: none;
+    transform: scale(1);
+}
+
+.og-lang-hub .og-lang-btn:hover { 
+    color: #ffffff !important; 
+    text-shadow: 
+         0 2px 4px rgba(1, 32, 48, 0.9),
+         0 0 15px rgba(255, 255, 255, 0.8),
+         0 0 30px #45C4B0 !important; 
+    transform: scale(1.15) !important; 
+}
+
+/* ==========================================
+   THE HORIZONTAL CIRCLE NAV (INNER PAGES)
+   ========================================== */
+
+.lang-switcher-container {
+    flex: 0 0 200px !important; /* Wide enough to catch the slide-out buttons */
+    height: 60px !important;    /* Tall enough to anchor them vertically */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important; /* Pulls the buttons UP off the purple line! */
+    position: relative !important;
+    z-index: 10000 !important;
+}
+
+.lang-btn {
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    font-family: 'Oxanium', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    position: absolute !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    background-color: #08F8C5 !important; /* accent-cyan */
+    color: #244373 !important; /* bg-navy */
+}
+
+.main-btn { z-index: 3 !important; }
+.sub-btn { z-index: 1 !important; opacity: 0 !important; transform: scale(0.5) !important; pointer-events: none !important; }
+
+/* THE HOVER ANIMATION */
+.lang-switcher-container:hover .left { transform: translateX(-55px) scale(0.9) !important; opacity: 0.5 !important; pointer-events: auto !important; }
+.lang-switcher-container:hover .right { transform: translateX(55px) scale(0.9) !important; opacity: 0.5 !important; pointer-events: auto !important; }
+.lang-switcher-container:hover .sub-btn:hover { opacity: 1 !important; transform: translateX(var(--dir)) scale(1.1) !important; box-shadow: 0 0 15px rgba(8, 248, 197, 0.8) !important; }
+/* Note: added --dir logic in HTML below */
+
+/* 1. When your mouse enters the circle container, dim the main button to match the others */
+.lang-switcher-container:hover .main-btn {
+    opacity: 0.5 !important; /* Adjust this number if your sub-buttons are lighter/darker */
+    transition: opacity 0.3s ease !important;
+}
+
+/* 2. But if you hover directly over the main button itself, light it back up! */
+.lang-switcher-container .main-btn:hover {
+    opacity: 1 !important;
+}
 
 body {
     background-color: var(--bg-navy);
@@ -22,47 +134,213 @@ body {
     overflow-x: hidden;
 }
 
+/* ==========================================
+   1. THE CLEAN HEADER (5 A.M. BASELINE)
+   ========================================== */
+#main-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 90px !important;
+    padding: 0 50px !important;
+    background-color: #244373 !important;
+    border-bottom: 2px solid #D19DFF !important;
+    position: relative !important;
+    z-index: 99999 !important;
+}
 
-header {
+/* Kills the purple visited link bug */
+#main-header a,
+#main-header a:visited,
+#main-header a:active {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+/* Left Side: Name */
+.home-link {
+    flex: 1; /* Takes up 1/3 of the space */
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 2px solid var(--accent-purple);
-    max-width: 1100px; 
-    margin: 0 auto; 
-    width: 90%; 
+    position: relative;
+    z-index: 10;
 }
 
-header h1 {
-    font-family: 'Oxanium', sans-serif; /* This applies the cool geometric font */
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--accent-cyan);
+.home-link h1 {
+    font-family: 'Oxanium', sans-serif !important;
+    font-size: 24px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
 }
 
-nav ul {
+.name-highlight {
+    color: #81D742 !important;
+    display: inline-block !important;
+    transition: transform 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+.home-link:hover .name-highlight {
+    transform: scale(1.02) !important;
+    text-shadow: 0 0 8px rgba(129, 215, 66, 0.5) !important;
+}
+
+.page-slash {
+    color: white !important;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+/* Center: Language Switcher */
+.lang-switcher-container {
+    flex: 0 0 150px; /* Locks it to exactly 150px in the center */
     display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10000 !important; /* Forces it above the left/right sections */
+}
+
+/* Right Side: Navigation */
+#main-nav {
+    flex: 1; /* Takes up 1/3 of the space */
+    display: flex;
+    justify-content: flex-end;
+}
+
+#main-nav ul {
+    display: flex;
+    gap: 30px;
     list-style: none;
-    gap: 25px; 
-    align-items: center; 
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
-    font-family: 'Open Sans', sans-serif !important; 
-    font-weight: 400 !important; 
-    font-size: 0.9rem !important; 
-    color: var(--text-main) !important; 
-    text-decoration: none !important; 
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
+#main-nav a {
+    font-family: 'Oxanium', sans-serif !important;
+    font-size: 18px !important;
+    text-transform: uppercase;
+    white-space: nowrap !important;
+    transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--accent-cyan) !important;
-    text-shadow: 0 0 8px rgba(8, 248, 197, 0.6);
+#main-nav a:hover {
+    color: #08F8C5 !important;
 }
+
+/* ==========================================
+   THE FINAL À PROPOS LAYOUT (SQUARE & WIDE)
+   ========================================== */
+
+/* 1. Center the Main Container */
+.apropos-main {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 5% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Make the Card WIDE (90% to prevent vertical scrolling) */
+.terminal-link {
+    display: block !important;
+    width: 90% !important; 
+    max-width: 1500px !important;
+    text-decoration: none !important;
+    margin: 0 auto 20px auto !important;
+}
+
+#terminal-window {
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 0 25px var(--accent-cyan);
+    width: 100% !important;
+    overflow: hidden;
+}
+
+/* KEEPING YOUR DOTS LOGIC */
+#terminal-header {
+    padding: 15px 30px;
+    border-bottom: 2px solid var(--accent-purple);
+    display: flex;
+    gap: 10px;
+}
+
+.terminal-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+.dot.red { background-color: #FF5F56; }
+.dot.yellow { background-color: #FFBD2E; }
+.dot.green { background-color: #27C93F; }
+
+/* 3. FIXED BODY: No more stretching. */
+#terminal-body {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; /* Vertically centers the content */
+    padding: 50px !important; 
+    gap: 50px !important; 
+}
+
+/* 4. FIXED IMAGE WRAPPER: Locked to 40% width */
+#terminal-image-wrapper {
+    flex: 0 0 40% !important; 
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* 5. FIXED PORTRAIT: Perfect Square Lock */
+#profile-image {
+    width: 100% !important; 
+    height: auto !important; 
+    aspect-ratio: 1 / 1 !important; /* 🚨 This keeps it square 🚨 */
+    object-fit: cover !important; 
+    border-radius: 15px !important;
+}
+
+/* 6. FIXED TEXT: Fills the rest */
+#terminal-text-content {
+    flex: 1 !important; 
+    min-width: 0 !important; 
+    color: #81d742;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Mobile safety fallback */
+@media (max-width: 1024px) {
+    #terminal-body { flex-direction: column !important; }
+    #terminal-image-wrapper { width: 100% !important; max-width: 450px !important; }
+    .terminal-link { width: 95% !important; }
+}
+
+/* ==========================================
+    THE PROJECT TITLES (Restoring the H2 Look)
+   ========================================== */
+.slide-header h4 {
+    font-family: 'Oxanium', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--accent-cyan) !important; /* The Teal you wanted */
+    text-align: center !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    font-size: 2.2rem; 
+    line-height: 1.2;
+}
+
+.slide-header h4 i {
+    font-style: italic !important;
+    color: white !important; /* Makes the italicized game name pop against the teal */
+}
+
 
 #hero a, 
 #hero a:visited, 
@@ -81,35 +359,35 @@ nav a:hover {
     width: 90%;
 }
 
+.profile-link:hover .highlight {
+    color: var(--text-green); 
+    text-shadow: 
+        0 0 10px var(--hero-box-left), 
+        0 0 20px rgba(129, 215, 66, 0.8);
+}
+
+.profile-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
 .profile-card {
-    background-color: transparent;
+    display: flex;
+    width: 100%; 
     border-radius: 20px; 
-    max-width: 1100px;
-    min-height: 320px;
-    width: 95%; 
-    display: flex; 
-    flex-direction: row; 
-    overflow: hidden; 
-    box-shadow: 0 0 25px var(--accent-cyan); 
+    box-shadow: 0 0 20px rgba(8, 248, 197, 0.4); 
+    transition: all 0.3s ease-in-out;
 }
 
 .profile-card:hover {
     box-shadow: 0 0 35px var(--accent-cyan);
 }
 
-.image-wrapper {
-    background-color: var(--hero-box-left);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 440px; 
-    padding: 0;
-}
-
 .circular-avatar {
     width: 340px; 
     height: 340px;
-    border-radius: 50%; /* Keeps it a circle */
+    border-radius: 50%;
     object-fit: cover;
     object-position: center;
     border: 4px solid var(--accent-purple); 
@@ -117,23 +395,47 @@ nav a:hover {
 }
 
 .fade-in-text {
-    opacity: 0;
-    transition: opacity 0.8s ease-in !important;
+    animation: fadeInText 1s ease-in forwards;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* --- LEFT SIDE: EVEN MORE CANVAS TO WARP --- */
+.image-wrapper {
+    background-image: url('figma herobackground.png'); 
+    background-size: 100% 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 50%; 
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: inherit; 
+    border-bottom-left-radius: inherit;
 }
 
 .text-content {
-    background-color: var(--hero-box-right);
-    padding: 50px; 
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    flex: 1; 
+    justify-content: center;
+    background-color: #13678A; 
+    flex: 0 0 50%; 
+    padding: 40px 30px; 
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
 .text-content p {
     color: var(--text-main);
     font-family: 'Oxanium', system-ui;
-    font-size: 2.6rem;
+    font-size: 2.3rem;
     line-height: 1.2;
     letter-spacing: 1px; 
     margin: 0;
@@ -141,33 +443,39 @@ nav a:hover {
 
 .highlight {
     color: var(--text-green);
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 8px #012030; 
+    white-space: nowrap; 
+    transition: all 0.3s ease-in-out;
 }
 
 #portfolio-grid {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
     padding-top: 20px;
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    flex-wrap: nowrap;
 }
 
 .card-link {
-    flex: 1;
-    max-width: 330px;
+    width: calc(33.333% - 14px); 
+    display: block;
     transition: transform 0.3s ease;
+    text-decoration: none;
 }
 
 .card-link:hover {
     transform: translateY(-10px);
 }
 
-.card-link svg {
-    width: 100%;
-    max-width: 350px;
+.card-link img {
+    width: 100%; 
     height: auto;
     border-radius: 20px;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
 }
 
 @media (max-width: 900px) {
@@ -340,30 +648,6 @@ nav a:hover {
     transform: scale(3) !important;
 }
 
-#terminal-window {
-    background-color: #1a1a1a;
-    border-radius: 20px;
-    max-width: 1400px;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 0 25px var(--accent-cyan);
-    margin-bottom: 30px;
-}
-
-#terminal-window:hover {
-    box-shadow: 0 0 35px var(--accent-cyan);
-}
-
-#terminal-header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 15px 30px;
-    border-bottom: 2px solid var(--accent-purple);
-}
-
 .terminal-dots {
     display: flex;
     gap: 10px;
@@ -380,9 +664,10 @@ nav a:hover {
 .dot.green { background-color: #27C93F; }
 
 #terminal-body {
-    display: flex;
-    padding: 50px;
-    gap: 50px;
+    display: flex !important;
+    flex-wrap: nowrap !important; /* Stops stacking unless mobile */
+    gap: 50px !important;
+    padding: 50px !important;
 }
 
 #terminal-image-wrapper {
@@ -401,19 +686,6 @@ nav a:hover {
     animation: purplePulse 3s infinite ease-in-out;
 }
 
-#terminal-text-content {
-    flex: 2;
-    color: #81d742;
-    font-family: 'Courier New', Courier, monospace; 
-    font-size: 0.95rem;
-    line-height: 1.5;
-    text-align: justify;
-}
-
-#terminal-text-content .highlight {
-    font-weight: bold;
-    color: #9cf55b;
-}
 
 #terminal-prompt {
     margin-top: 20px;
@@ -464,72 +736,121 @@ nav a:hover {
     margin-bottom: 20px; 
 }
 
+/* --- CONTACT PAGE STYLING --- */
 .contact-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70vh;
-    padding: 20px;
+    min-height: 85vh; /* Slightly taller to push it into view */
+    padding: 10px; /* Tightened */
 }
 
-.contact-card {
+#contact-console {
+    width: 100%;
+    max-width: 900px;
+}
+
+.console-container {
     background-color: #1a1a1a;
     border-radius: 20px;
-    padding: 50px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
+    padding: 30px; /* Tightened from 50px */
     box-shadow: 0 0 25px var(--accent-cyan);
     border: 2px solid var(--accent-purple);
 }
 
-.contact-card h2 {
-    font-family: 'Germania One', system-ui;
-    color: var(--text-green);
-    font-size: 2.5rem;
+.console-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.console-header h3 {
+    color: #81d742;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.console-header h2 {
+    font-family: 'Oxanium', sans-serif;
+    color: white;
+    font-size: 1.8rem;
     margin-bottom: 10px;
 }
 
-.contact-info {
-    margin-top: 30px;
+.console-header p {
+    font-family: 'Courier New', monospace;
+    color: #81d742;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.console-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Tightened gap */
+}
+
+.console-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(129, 215, 66, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    align-items: flex-start;
-    padding-left: 20px;
-}
-
-.contact-item {
-    display: flex;
     align-items: center;
-    gap: 20px;
-    font-size: 1.1rem;
-    color: var(--text-main);
+    text-align: center;
 }
 
-.contact-item .icon {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 0 5px var(--accent-cyan));
+.console-card:hover {
+    background: rgba(129, 215, 66, 0.1);
+    border-color: #81d742;
+    transform: translateY(-2px);
 }
 
-.contact-item a {
-    color: var(--text-main);
-    text-decoration: none;
-    transition: color 0.3s ease;
+.card-title {
+    font-family: 'Oxanium', sans-serif;
+    font-size: 0.7rem;
+    color: #81d742;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
-.contact-item a:hover {
-    color: var(--accent-cyan);
-    text-decoration: underline;
+.card-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.card-data {
+    font-family: 'Courier New', monospace;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Progress Bar Styling */
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 60%;
+    height: 100%;
+    background: #81d742;
+    box-shadow: 0 0 10px #81d742;
 }
 
 @media (max-width: 600px) {
-    .contact-card {
-        padding: 30px 15px;
-    }
-    .contact-item {
-        font-size: 0.9rem;
-    }
+    .console-container { padding: 20px; }
+    .console-header h2 { font-size: 1.4rem; }
+    .console-grid { grid-template-columns: 1fr; }
 }
 
 .language-bubble {
@@ -706,3 +1027,88 @@ nav a:hover {
     font-size: 0.75rem;
     text-transform: uppercase;
 }
+
+[data-key] {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+/* Once they have text inside, fade them in */
+[data-key]:not(:empty) {
+    opacity: 1;
+}
+/* =========================================
+   FINAL POLISH (PORTFOLIO, CONTACT, FONTS)
+   ========================================= */
+
+/* 1. Header Italics & Scoped Parentheses Color */
+#project-slideshow h4 i, 
+#project-slideshow h4 em {
+    font-style: italic !important;
+}
+
+#project-slideshow h4 .header-paren {
+    color: white !important;
+    font-weight: normal;
+}
+
+/* 2. Geo Link Styling */
+.geo-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dashed #81d742;
+    transition: color 0.3s ease;
+}
+.geo-link:hover {
+    color: #08F8C5;
+    text-decoration: underline;
+}
+
+/* 3. YouTube Seamless Hover & Pointer Fix */
+.youtube-link-wrapper {
+    cursor: pointer !important; /* FORCES THE LITTLE CLICK HAND */
+}
+.yt-thumb-img, .yt-play-btn {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.youtube-link-wrapper:hover .yt-thumb-img {
+    transform: scale(1.05);
+}
+.youtube-link-wrapper:hover .yt-play-btn {
+    transform: translate(-50%, -50%) scale(1.05) !important;
+}
+
+/* 4. Strategic & Accessible Text Boxes */
+.accessible-title {
+    margin-top: 40px; 
+    color: #D19DFF; 
+    font-family: 'Germania One', system-ui; 
+    font-size: 1.5rem; 
+    text-align: center;
+}
+.accessible-box {
+    text-align: left; 
+    background: rgba(0,0,0,0.2); 
+    padding: 25px; 
+    border-radius: 15px; 
+    margin-top: 15px; 
+    font-family: 'Open Sans', sans-serif; 
+    line-height: 1.8; 
+    font-size: 0.95rem;
+    color: #e0e0e0;
+}
+#ferragamo-slide .accessible-box {
+    text-align: justify !important; 
+}
+.accessible-box strong {
+    color: #81d742;
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Oxanium', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* 5. Contact Page Tightening */
+.contact-container { padding: 10px !important; min-height: 85vh; }
+.console-container { padding: 30px !important; }
+.console-grid { gap: 15px !important; }
