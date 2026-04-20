@@ -24,7 +24,11 @@ const translations = {
         card_title_linkedin: "PROFIL LINKEDIN",
         card_title_portfolio: "PROFIL PORTFOLIO",
         card_data_portfolio: "EXPLORER PROJETS",
-        
+        about_title: "/ À Propos",
+        bio_p1: "<strong>Ren McKinnell</strong> est une artiste et développeuse de contenu numérique trilingue basée à Paris. Sa perspective profondément multiculturelle s’est forgée à San Diego, en Californie aux portes du Mexique, au confluent de ses racines franco-canadiennes.",
+        bio_p2: "Elle a obtenu sa Licence en langues étrangères (français et espagnol), se hissant dans le top 1 % de sa promotion, une réussite complétée par le prix « Coup de Cœur » de la mairie de Marseille, reçu pour une lecture théâtrale lors de la Semaine de la Francophonie. Par la suite, elle a passé un an à Bogotá en tant que spécialiste de l'expression écrite en anglais. C’est lors de son Master 1 à l’ESSCA que la découverte de la programmation a provoqué un véritable déclic. Elle a alors choisi de pivoter vers le Master 2 CAWEB de l’Université de Strasbourg : suivi à distance, ce cursus lui permet de conjuguer une formation technique de pointe avec son développement professionnel à Paris.",
+        bio_p3: "Aujourd'hui superviseuse chez Runaway Games, elle gère des projets marketing et de revue vidéo, une expérience qui renforce sa vision stratégique du numérique. Pour Ren, la localisation est une ingénierie globale qui fusionne le design d'interface (UI/UX), l'architecture du code et l'adaptation culturelle. Son objectif est de bâtir des passerelles technologiques fluides et universellement accessibles.",
+
         /* 1. MARKETING & STRATEGY */
         proj_watch_btn: "▶ Regarder sur YouTube",
         proj1_title: "Supervision & Production Vidéo (Runaway Games)",
@@ -93,7 +97,11 @@ const translations = {
         card_title_linkedin: "LINKEDIN PROFILE",
         card_title_portfolio: "PORTFOLIO PROFILE",
         card_data_portfolio: "EXPLORE PROJECTS",
-        
+        about_title: "/ About Me",
+        bio_p1: "<strong>Ren McKinnell</strong> is a trilingual digital content developer and artist based in Paris. A dual Canadian and American citizen raised in San Diego, California, near the border of Mexico, her perspective is inherently multicultural.",
+        bio_p2: "Her background is a deliberate blend of high-level language proficiency and technical skill. While studying abroad in France in 2023, she won the Marseille town hall’s “Coup de Cœur” 1st prize for her theatrical reading performance in her non-native language. She later graduated Summa Cum Laude with a perfect 4.0 GPA—placing in the top 1% of her class—with a B.A. in French and a minor in Spanish. After spending a year working as an English writing specialist in Bogotá, Colombia, she is now pursuing her M2 in the CAWEB program (Multilingual Web Communication) at the University of Strasbourg, focusing entirely on content creation and localization.",
+        bio_p3: "Currently a supervisor at Runaway Games, she manages marketing projects and video reviews—an experience that strengthens her strategic digital vision. Driven by a passion for accessible tech and cultural translation, Ren is dedicated to building universally understood technology. She seeks to create seamless digital experiences—bridging the creative world with the power of code.",
+
         /* 1. MARKETING & STRATEGY */
         proj_watch_btn: "▶ Watch on YouTube",
         proj1_title: "Game Supervision & Video Production (Runaway Games)",
@@ -162,7 +170,11 @@ const translations = {
         card_title_linkedin: "PERFIL LINKEDIN",
         card_title_portfolio: "PERFIL PORTAFOLIO",
         card_data_portfolio: "EXPLORAR PROYECTOS",
-        
+        about_title: "/ Sobre Mí",
+        bio_p1: "<strong>Ren McKinnell</strong> es una desarrolladora de contenido digital y artista trilingüe radicada en París. Con doble nacionalidad canadiense y estadounidense, fue criada en San Diego, California, cerca de la frontera con México, lo que refleja su perspectiva inherentemente multicultural.",
+        bio_p2: "Su perfil es una mezcla muy bien pensada entre un alto nivel de idiomas y habilidades técnicas. Mientras estudiaba en Francia en 2023, la alcaldía de Marsella le otorgó el primer premio “Coup de Cœur” por su interpretación en una lectura dramatizada en su segundo idioma. Más adelante, obtuvo su licenciatura en Francés y una especialidad menor en Español con mención honorífica y un promedio perfecto de 4.0—ubicándose en el 1 % superior de su clase. Después de pasar un año trabajando como especialista en redacción en inglés en Bogotá, Colombia, ahora está haciendo su maestría (M2) en el programa CAWEB (Comunicación Web Multilingüe) de la Universidad de Estrasburgo, metida de lleno en la creación de contenido y la localización.",
+        bio_p3: "Actualmente supervisora en Runaway Games, gestiona proyectos de marketing y reseñas de video, lo que refuerza su visión estratégica digital. Movida por su pasión por la tecnología accesible y la traducción cultural, Ren se dedica a construir tecnología que todo el mundo pueda apreciar. Su objetivo es crear experiencias digitales fluidas, tendiendo puentes entre el mundo creativo y el poder del código.",
+
         /* 1. MARKETING & STRATEGY */
         proj_watch_btn: "▶ Ver en YouTube",
         proj1_title: "Supervisión & Producción de Video (Runaway Games)",
