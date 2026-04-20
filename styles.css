@@ -390,16 +390,19 @@ body {
 
 .profile-card {
     display: flex;
-    width: 100%; 
+    box-sizing: border-box !important;
+    width: calc(100% - 40px) !important;
+    margin: 20px auto !important;
     border-radius: 20px; 
-    box-shadow: 0 0 20px rgba(8, 248, 197, 0.4); 
+    /* The 0 0 offset ensures the glow is perfectly centered */
+    box-shadow: 0 0 20px rgba(8, 248, 197, 0.4) !important; 
     transition: all 0.3s ease-in-out;
-    margin: 15px;
-    width: calc(100% - 30px) !important;
+    overflow: visible !important;
 }
 
 .profile-card:hover {
-    box-shadow: 0 0 35px var(--accent-cyan);
+    /* Maintained 0 0 offset for a consistent halo on hover */
+    box-shadow: 0 0 35px var(--accent-cyan) !important;
 }
 
 .circular-avatar {
@@ -440,12 +443,18 @@ body {
 }
 
 .text-content {
+
+    flex: 1 !important;
+    padding: 30px !important; 
+    max-width: 50%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #13678A; 
-    flex: 0 0 50%; 
-    padding: 40px 30px; 
     border-top-right-radius: inherit;
     border-bottom-right-radius: inherit;
 }
