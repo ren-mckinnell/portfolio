@@ -731,6 +731,7 @@ body {
     font-size: 1.1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    margin-top: 10px !important;
 }
 
 .download-button:hover {
@@ -1244,4 +1245,44 @@ body {
     background-color: #B85DE6 !important;
     box-shadow: 0 0 25px rgba(202, 117, 242, 0.8) !important; 
     transform: translate(-50%, -50%) scale(1.05); /* Keeps it centered while giving it a little pop */
+}
+
+#terminal-text-content p {
+    font-size: 1.10rem; /* Bumps up the size */
+    line-height: 1.25;   /* Adds breathing room between the lines */
+    color: var(--text-green);
+    margin: 11px;     /* Ensures it's a crisp, readable off-white */
+}
+
+/* Keeps your bolded name looking sharp */
+#terminal-text-content strong {
+    color: var(--text-green);
+    font-weight: 700;
+}
+
+.terminal-body { /* Replace with your actual layout element, e.g. #terminal-content */
+    display: flex; /* Assuming it's already flex */
+    align-items: center; /* THE FIX! This forces vertical centering of columns */
+}
+
+/* =========================================
+   TERMINAL TEXT & BUTTON ALIGNMENT FIXES
+   ========================================= */
+
+/* 1. STRIP PARAGRAPH MARGINS (Centers the text block with the photo) */
+#terminal-text-content p:first-child {
+    margin-top: 0 !important;
+}
+
+#terminal-text-content p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* 2. SHRINK THE GAP BETWEEN TERMINAL & BUTTON */
+#terminal-window {
+    margin-bottom: 15px !important; /* Shrinks the space below the terminal */
+}
+
+.download-button {
+    margin-top: 0px !important; /* Stops the button from pushing itself away */
 }
