@@ -394,6 +394,8 @@ body {
     border-radius: 20px; 
     box-shadow: 0 0 20px rgba(8, 248, 197, 0.4); 
     transition: all 0.3s ease-in-out;
+   margin: 15px;
+    width: calc(100% - 30px) !important;
 }
 
 .profile-card:hover {
