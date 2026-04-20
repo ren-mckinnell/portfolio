@@ -75,7 +75,7 @@
                 <p class="tools" data-key="proj2_tools"></p>
             </div>
         </div>
-        
+
         <div class="slide" id="ferragamo-slide">
             <div class="slide-header">
                 <button class="slide-arrow prev" onclick="changeSlide(-1)">&#10140;</button>
@@ -252,13 +252,26 @@ window.addEventListener('load', fitActiveTitle);
 window.addEventListener('resize', fitActiveTitle);
 window.addEventListener('languageChanged', fitActiveTitle);
 
-// ORIGINAL ZOOM FUNCTION
+// ORIGINAL ZOOM + NEW PANNING FUNCTION
 document.querySelectorAll('.slide-image.zoom-on-hover, .slide-video').forEach(media => {
+    
+    // 1. Click to toggle zoom and set initial anchor point
     media.addEventListener('click', function(e) {
         this.classList.toggle('super-zoomed');
         if (!this.classList.contains('super-zoomed')) {
+            // Reset to center when zooming out
             setTimeout(() => { this.style.transformOrigin = 'center center'; }, 400); 
         } else {
+            // Zoom in on the exact click location
+            const x = (e.offsetX / this.offsetWidth) * 100;
+            const y = (e.offsetY / this.offsetHeight) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+        }
+    });
+
+    // 2. Mouse move to pan the image while it is zoomed in
+    media.addEventListener('mousemove', function(e) {
+        if (this.classList.contains('super-zoomed')) {
             const x = (e.offsetX / this.offsetWidth) * 100;
             const y = (e.offsetY / this.offsetHeight) * 100;
             this.style.transformOrigin = `${x}% ${y}%`;
@@ -266,6 +279,7 @@ document.querySelectorAll('.slide-image.zoom-on-hover, .slide-video').forEach(me
     });
 });
 </script>
+
 </main>
 
 <script src="i18n.js"></script>
