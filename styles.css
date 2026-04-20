@@ -394,7 +394,7 @@ body {
     border-radius: 20px; 
     box-shadow: 0 0 20px rgba(8, 248, 197, 0.4); 
     transition: all 0.3s ease-in-out;
-   margin: 15px;
+    margin: 15px;
     width: calc(100% - 30px) !important;
 }
 
@@ -1156,15 +1156,83 @@ body {
     display: inline-block;
 }
 
-/* 3. CV BUTTON: Matches your #cv-button and .download-button */
 #cv-button.download-button {
-    border: 1px solid #D19DFF !important; /* Your Purple */
-    color: #D19DFF !important;
-    background: rgba(209, 157, 255, 0.05) !important;
+    background-color: #CA75F2 !important; /* Solid purple to match the first photo */
+    color: #FFFFFF !important; /* Solid white text */
+    border: none !important; /* Removes the thin outline */
+    box-shadow: none !important;
     transition: all 0.3s ease !important;
 }
 
 #cv-button.download-button:hover {
-    background: rgba(209, 157, 255, 0.2) !important;
-    box-shadow: 0 0 15px rgba(209, 157, 255, 0.4) !important;
+    background-color: #B85DE6 !important; /* Slightly deeper purple on hover */
+    box-shadow: 0 0 15px rgba(202, 117, 242, 0.6) !important; /* Purple glow */
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+   SLIDE TOOLS - "CARD WITHIN A CARD" EFFECT
+   ========================================= */
+
+/* =========================================
+   SLIDE TOOLS - INSET BOX + OXANIUM HEADER
+   ========================================= */
+
+/* 1. The Container (The Border/Box) */
+.slide-info .tools {
+    background: rgba(255, 255, 255, 0.06); 
+    border-radius: 12px; 
+    padding: 18px 20px; 
+    margin-top: 25px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    display: block; 
+    line-height: 1.6; 
+}
+
+/* 2. The Header (The Green Oxanium Text) */
+.slide-info .tools strong {
+    font-family: 'Oxanium', sans-serif !important;
+    color: #8CE12B; /* Vibrant green */
+    font-size: 1.15em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: block; /* Puts the header on its own line */
+    margin-bottom: 0px; /* Breathing room before the stars */
+}
+
+/* =========================================
+   WATCH ON YOUTUBE - OVERLAY BUTTON
+   ========================================= */
+
+/* The container gets the hand cursor back and allows the button to center */
+.video-container {
+    position: relative !important;
+    cursor: pointer !important; 
+}
+
+/* Bulletproof centering over the image */
+.watch-youtube-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers it perfectly on the X and Y axis */
+    background-color: #CA75F2 !important;
+    color: #FFFFFF !important;
+    padding: 16px 32px;
+    border-radius: 40px;
+    font-family: 'Oxanium', sans-serif !important; /* 🎯 THE OXANIUM UPGRADE */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5) !important;
+    transition: all 0.3s ease !important;
+    z-index: 10;
+    letter-spacing: 0.5px; /* Gives the tech font breathing room */
+}
+
+.watch-youtube-button:hover {
+    background-color: #B85DE6 !important;
+    box-shadow: 0 0 25px rgba(202, 117, 242, 0.8) !important; 
+    transform: translate(-50%, -50%) scale(1.05); /* Keeps it centered while giving it a little pop */
 }
