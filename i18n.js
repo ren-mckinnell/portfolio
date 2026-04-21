@@ -2,6 +2,7 @@ const translations = {
     fr: {
         nav_page_title: "/ Accueil",
         nav_portfolio: "PORTFOLIO",
+        nav_portfolio_title: "/ Portfolio",
         nav_about: "À PROPOS",
         nav_contact: "CONTACT",
         hero_tagline: "Californienne trilingue<br>basée à Paris,",
@@ -74,6 +75,7 @@ const translations = {
 
     en: {
         nav_page_title: "/ Home",
+        nav_portfolio_title: "/ Portfolio",
         hero_tagline: "California-born.<br>Paris-based.<br>3 languages.",
         hero_role: "1 Digital Content Developer.",
         nav_portfolio: "PORTFOLIO",
@@ -147,6 +149,7 @@ const translations = {
 
     es: {
         nav_page_title: "/ Inicio",
+        nav_portfolio_title: "/ Portafolio",
         hero_tagline: "Californiana trilingüe<br>radicada en París,",
         hero_role: "Soy Desarrolladora de <br>contenido digital.",
         nav_portfolio: "PORTAFOLIO",
